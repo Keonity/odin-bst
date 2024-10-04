@@ -1,8 +1,23 @@
+import { Node } from "./node";
+
 class Tree {
     constructor(array) {
         this.nodes = this.mergeSort(array);
         this.root = this.nodes[Math.floor(array.length / 2)];
     };
+
+    buildTree(start, end) {
+        var mid = parseInt((start + end) / 2);
+        if (start > end) {
+            return null;
+        }
+        console.log(`Start: ${start}, End: ${end}`);
+        var currNode = new Node(this.nodes[mid]);
+        currNode.left = this.buildTree(start, mid - 1);
+        currNode.right = this.buildTree(mid + 1, end);
+        console.log(currNode);
+        return currNode;
+    }
 
     merge(firstArray, secondArray) {
         let newArray = [];

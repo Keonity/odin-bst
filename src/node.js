@@ -1,20 +1,20 @@
 class Node {
-    constructor(value = null, left = null, right = null) {
+    constructor(value) {
         this.value = value;
-        this.left = left;
-        this.right = right;
+        this.left = null;
+        this.right = null;
     }
 
     get value() {
-        return this.value;
+        return this._value;
     }
 
     get left() {
-        return this.left;
+        return this._left;
     }
 
     get right() {
-        return this.right;
+        return this._right;
     }
 
     set value(value) {
