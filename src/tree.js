@@ -6,6 +6,11 @@ class Tree {
         this.root = this.nodes[Math.floor(array.length / 2)];
     };
 
+    removeDuplicates() {
+        this.nodes = Array.from(new Set(this.nodes));
+        this.root = this.nodes[Math.floor(this.nodes.length / 2)];
+    }
+
     buildTree(start, end) {
         var mid = parseInt((start + end) / 2);
         if (start > end) {
@@ -16,6 +21,12 @@ class Tree {
         currNode.left = this.buildTree(start, mid - 1);
         currNode.right = this.buildTree(mid + 1, end);
         console.log(currNode);
+
+        if (currNode.value === null) {
+            return null;
+        }
+
+        this.root = currNode;
         return currNode;
     }
 
@@ -51,6 +62,44 @@ class Tree {
             let leftHalf = array.slice(0, mid);
             let rightHalf = array.slice(mid);
             return this.merge(this.mergeSort(leftHalf), this.mergeSort(rightHalf));
+        }
+    }
+
+    insert(value) {
+        let newNode = new Node(value);
+        let currNode = this.root;
+        console.log(`CurrNode: ${currNode}`);
+        while (currNode) {
+            console.log(currNode);
+            console.log(newNode.value);
+            if (currNode.value > newNode.value) {
+                console.log(`Going left`);
+                if (currNode.left) {
+                    currNode = currNode.left;
+                }
+                else {
+                    currNode.left = newNode;
+                    return;
+                }
+            }
+            else if (currNode.value < newNode.value) {
+                console.log(`Going right`);
+                if (currNode.right) {
+                    currNode = currNode.right;
+                }
+                else {
+                    currNode.right = newNode;
+                    return;
+                }
+            }
+            else if (currNode.value === newNode.value) {
+                console.log(`Equal`);
+                return;
+            }
+            else {
+                console.log(`Else`);
+                currNode = currNode.right;
+            }
         }
     }
 }

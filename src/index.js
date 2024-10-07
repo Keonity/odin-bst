@@ -33,3 +33,10 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 prettyPrint(newTree.buildTree(0, newTree.nodes.length));
+
+const secondTest = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+console.log(secondTest);
+secondTest.removeDuplicates();
+secondTest.buildTree(0, secondTest.nodes.length)
+secondTest.insert(2500);
+prettyPrint(secondTest.root);
