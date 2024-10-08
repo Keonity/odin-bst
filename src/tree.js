@@ -102,6 +102,36 @@ class Tree {
             }
         }
     }
+
+    delete(value) {
+        let currNode = this.root;
+        let prevNode;
+        console.log(`CurrNode Delete: ${currNode}`);
+        console.log(currNode);
+        while (currNode.value !== null) {
+            if (currNode.value === value) {
+                if (currNode.left === null && currNode.right === null) {
+                    if (currNode.value < prevNode.value) {
+                        prevNode.left = null;
+                    }
+                    else {
+                        prevNode.right = null;
+                    }
+                    currNode.value = null;
+                }
+            }
+            else if (currNode.value < value) {
+                prevNode = currNode;
+                currNode = currNode.right;
+            }
+            else if (currNode.value > value) {
+                prevNode = currNode;
+                currNode = currNode.left;
+            }
+            
+        }
+        return;
+    }
 }
 
 export { Tree };

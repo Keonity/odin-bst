@@ -39,4 +39,8 @@ console.log(secondTest);
 secondTest.removeDuplicates();
 secondTest.buildTree(0, secondTest.nodes.length)
 secondTest.insert(2500);
+secondTest.insert(0);
+prettyPrint(secondTest.root);
+console.log(secondTest.root);
+secondTest.delete(0);
 prettyPrint(secondTest.root);
