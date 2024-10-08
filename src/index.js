@@ -44,3 +44,10 @@ prettyPrint(secondTest.root);
 console.log(secondTest.root);
 secondTest.delete(0);
 prettyPrint(secondTest.root);
+
+secondTest.delete(9);
+secondTest.insert(2);
+secondTest.delete(3);
+secondTest.delete(6345);
+secondTest.delete(5);
+prettyPrint(secondTest.root);

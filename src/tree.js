@@ -108,8 +108,9 @@ class Tree {
         let prevNode;
         console.log(`CurrNode Delete: ${currNode}`);
         console.log(currNode);
-        while (currNode.value !== null) {
+        while (currNode) {
             if (currNode.value === value) {
+                console.log(`If 1`);
                 if (currNode.left === null && currNode.right === null) {
                     if (currNode.value < prevNode.value) {
                         prevNode.left = null;
@@ -119,14 +120,45 @@ class Tree {
                     }
                     currNode.value = null;
                 }
+                else if (currNode.left === null && currNode.right !== null) {
+                    console.log(`L Null`);
+                    if (currNode.value > prevNode.value) {
+                        prevNode.right = currNode.right;
+                    }
+                    else {
+                        prevNode.left = currNode.right;
+                    }
+                    break;
+                }
+                else if (currNode.right === null && currNode.left !== null) {
+                    console.log(`R Null`);
+                    console.log(`CurrNode Before`);
+                    console.log(currNode);
+                    if (currNode.value > prevNode.value) {
+                        prevNode.right = currNode.left;
+                    }
+                    else {
+                        prevNode.left = currNode.left;
+                    }
+                    
+                    console.log(`CurrNode after`);
+                    console.log(currNode);
+                    break;
+                }
             }
             else if (currNode.value < value) {
+                console.log(`ElIf 1`);
                 prevNode = currNode;
                 currNode = currNode.right;
             }
             else if (currNode.value > value) {
+                console.log(`ElIf 2`);
                 prevNode = currNode;
                 currNode = currNode.left;
+            }
+            else {
+                console.log(`Else 1`);
+                currNode = currNode.right;
             }
             
         }
