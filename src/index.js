@@ -43,3 +43,5 @@ prettyPrint(secondTest.root);
 secondTest.delNode(secondTest.root, 67);
 secondTest.delNode(secondTest.root, 4);
 prettyPrint(secondTest.root);
+
+console.log(secondTest.find(secondTest.root, 6345));

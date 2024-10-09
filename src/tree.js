@@ -150,6 +150,33 @@ class Tree {
 
         return root;
     }
+
+    find(root, value) {
+        console.log(root);
+        if (root === null) {
+            console.log(`If`);
+            return null;
+        } 
+
+        if (root.value > value) {
+            console.log(`If 2`);
+            return this.find(root.left, value);
+        }
+        else if (root.value < value) {
+            console.log(`Elif`);
+            console.log(root.right);
+            return this.find(root.right, value);
+        }
+        else if (root.value === value) {
+            console.log(`Found`);
+            console.log(root);
+            return root;
+        }
+        else {
+            console.log(`Else`);
+            return null;
+        }
+    }
 }
 
 export { Tree };
