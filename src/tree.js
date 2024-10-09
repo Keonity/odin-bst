@@ -103,66 +103,52 @@ class Tree {
         }
     }
 
-    delete(value) {
-        let currNode = this.root;
-        let prevNode;
-        console.log(`CurrNode Delete: ${currNode}`);
-        console.log(currNode);
-        while (currNode) {
-            if (currNode.value === value) {
-                console.log(`If 1`);
-                if (currNode.left === null && currNode.right === null) {
-                    if (currNode.value < prevNode.value) {
-                        prevNode.left = null;
-                    }
-                    else {
-                        prevNode.right = null;
-                    }
-                    currNode.value = null;
-                }
-                else if (currNode.left === null && currNode.right !== null) {
-                    console.log(`L Null`);
-                    if (currNode.value > prevNode.value) {
-                        prevNode.right = currNode.right;
-                    }
-                    else {
-                        prevNode.left = currNode.right;
-                    }
-                    break;
-                }
-                else if (currNode.right === null && currNode.left !== null) {
-                    console.log(`R Null`);
-                    console.log(`CurrNode Before`);
-                    console.log(currNode);
-                    if (currNode.value > prevNode.value) {
-                        prevNode.right = currNode.left;
-                    }
-                    else {
-                        prevNode.left = currNode.left;
-                    }
-                    
-                    console.log(`CurrNode after`);
-                    console.log(currNode);
-                    break;
-                }
-            }
-            else if (currNode.value < value) {
-                console.log(`ElIf 1`);
-                prevNode = currNode;
-                currNode = currNode.right;
-            }
-            else if (currNode.value > value) {
-                console.log(`ElIf 2`);
-                prevNode = currNode;
-                currNode = currNode.left;
-            }
-            else {
-                console.log(`Else 1`);
-                currNode = currNode.right;
-            }
-            
+    getSuccessor(root) {
+
+        root = root.right;
+        while (root !== null && root.left !== null) {
+            root = root.left;
         }
-        return;
+        return root;
+    }
+
+    delNode(root, value) {
+        console.log(`Value: ${value}`);
+        console.log(`Root:`);
+        console.log(root);
+        console.log(this);
+        if (root === null) {
+            return root;
+        }
+
+        if (root.value > value) {
+            // If current root is larger than searched value
+            console.log(`Searching left`);
+            root.left = this.delNode(root.left, value);
+        }
+        else if (root.value < value) {
+            console.log(`Searching right`);
+            root.right = this.delNode(root.right, value);
+        }
+        else {
+
+            if (root.left === null) {
+                console.log(`Returning right`);
+                return root.right;
+            }
+            if (root.right === null) {
+                console.log(`Returning left`);
+                return root.left;
+            }
+
+            let succNode = this.getSuccessor(root);
+            console.log(succNode);
+            root.value = succNode.value;
+            root.right = this.delNode(root.right, succNode.value);
+
+        }
+
+        return root;
     }
 }
 

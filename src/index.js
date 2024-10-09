@@ -37,17 +37,9 @@ prettyPrint(newTree.buildTree(0, newTree.nodes.length));
 const secondTest = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
 console.log(secondTest);
 secondTest.removeDuplicates();
-secondTest.buildTree(0, secondTest.nodes.length)
-secondTest.insert(2500);
-secondTest.insert(0);
-prettyPrint(secondTest.root);
-console.log(secondTest.root);
-secondTest.delete(0);
-prettyPrint(secondTest.root);
+secondTest.buildTree(0, secondTest.nodes.length);
 
-secondTest.delete(9);
-secondTest.insert(2);
-secondTest.delete(3);
-secondTest.delete(6345);
-secondTest.delete(5);
+prettyPrint(secondTest.root);
+secondTest.delNode(secondTest.root, 67);
+secondTest.delNode(secondTest.root, 4);
 prettyPrint(secondTest.root);
