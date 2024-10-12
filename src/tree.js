@@ -179,6 +179,7 @@ class Tree {
     }
 
     levelOrder(callback) {
+        console.log(`Level Order Traversal`);
         let queueArray = [];
         let currentNode = this.root;
         queueArray.push(currentNode);
@@ -195,6 +196,21 @@ class Tree {
 
             callback(currentNode);
 
+        }
+    }
+
+    inOrder(node, callback) {
+        console.log(`In Order Traversal`);
+        let currentNode = node;
+
+        if (currentNode != null) {
+            if (currentNode.left != null) {
+                this.inOrder(currentNode.left, callback);
+            }
+            callback(currentNode);
+            if (currentNode.right != null) {
+                this.inOrder(currentNode.right, callback);
+            }
         }
 
     }
