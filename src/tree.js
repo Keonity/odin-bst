@@ -184,6 +184,10 @@ class Tree {
         let currentNode = this.root;
         queueArray.push(currentNode);
 
+        if (typeof callback != 'function') {
+            throw new Error("Must use callback.");
+        }
+
         while (queueArray.length > 0) {
             currentNode = queueArray.shift();
             if (currentNode.left != null) {
@@ -203,6 +207,10 @@ class Tree {
         console.log(`In Order Traversal`);
         let currentNode = node;
 
+        if (typeof callback != 'function') {
+            throw new Error("Must use callback.");
+        }
+
         if (currentNode != null) {
             if (currentNode.left != null) {
                 this.inOrder(currentNode.left, callback);
@@ -212,7 +220,25 @@ class Tree {
                 this.inOrder(currentNode.right, callback);
             }
         }
+    }
 
+    preOrder(node, callback) {
+        console.log(`Pre Order Traversal`);
+        let currentNode = node;
+
+        if (typeof callback != 'function') {
+            throw new Error("Must use callback.");
+        }
+
+        if (currentNode != null) {
+            callback(currentNode);
+            if (currentNode.left != null) {
+                this.preOrder(currentNode.left, callback);
+            }
+            if (currentNode.right != null) {
+                this.preOrder(currentNode.right, callback);
+            }
+        }
     }
 
     logNode(node) {

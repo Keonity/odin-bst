@@ -48,3 +48,4 @@ console.log(secondTest.find(secondTest.root, 6345));
 
 secondTest.levelOrder(secondTest.logNode);
 secondTest.inOrder(secondTest.root, secondTest.logNode);
+secondTest.preOrder(secondTest.root, secondTest.logNode);
