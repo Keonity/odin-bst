@@ -241,6 +241,25 @@ class Tree {
         }
     }
 
+    postOrder(node, callback) {
+        console.log(`Post Order Traversal`);
+        let currentNode = node;
+
+        if (typeof callback != 'function') {
+            throw new Error("Must use callback.");
+        }
+
+        if (currentNode != null) {
+            if (currentNode.left != null) {
+                this.postOrder(currentNode.left, callback);
+            }
+            if (currentNode.right != null) {
+                this.postOrder(currentNode.right, callback);
+            }
+            callback(currentNode);
+        }
+    }
+
     logNode(node) {
         console.log(node.value);
     }
