@@ -177,6 +177,31 @@ class Tree {
             return null;
         }
     }
+
+    levelOrder(callback) {
+        let queueArray = [];
+        let currentNode = this.root;
+        queueArray.push(currentNode);
+
+        while (queueArray.length > 0) {
+            currentNode = queueArray.shift();
+            if (currentNode.left != null) {
+                queueArray.push(currentNode.left);
+            }
+
+            if (currentNode.right != null) {
+                queueArray.push(currentNode.right);
+            }
+
+            callback(currentNode);
+
+        }
+
+    }
+
+    logNode(node) {
+        console.log(node.value);
+    }
 }
 
 export { Tree };

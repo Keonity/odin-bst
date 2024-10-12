@@ -45,3 +45,5 @@ secondTest.delNode(secondTest.root, 4);
 prettyPrint(secondTest.root);
 
 console.log(secondTest.find(secondTest.root, 6345));
+
+secondTest.levelOrder(secondTest.logNode);
