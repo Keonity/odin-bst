@@ -263,6 +263,30 @@ class Tree {
     logNode(node) {
         console.log(node.value);
     }
+
+    height(node) {
+        let currentNode = node;
+        let leftHt, rightHt = 0;
+
+        if (currentNode == null) {
+            return 0;
+        }
+
+        if (currentNode.left != null) {
+            leftHt = this.height(currentNode.left);
+        }
+
+        if (currentNode.right != null) {
+            rightHt = this.height(currentNode.right);
+        }
+
+        if (leftHt > rightHt) {
+            return leftHt + 1;
+        }
+        else {
+            return rightHt + 1;
+        }
+    }
 }
 
 export { Tree };

@@ -50,3 +50,7 @@ secondTest.levelOrder(secondTest.logNode);
 secondTest.inOrder(secondTest.root, secondTest.logNode);
 secondTest.preOrder(secondTest.root, secondTest.logNode);
 secondTest.postOrder(secondTest.root, secondTest.logNode);
+
+console.log(secondTest.height(secondTest.root));
+console.log(secondTest.height(secondTest.root.left.right));
+console.log(secondTest.height(secondTest.root.right));
