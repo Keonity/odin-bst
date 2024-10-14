@@ -287,6 +287,35 @@ class Tree {
             return rightHt + 1;
         }
     }
+
+    depth(node) {
+        let currentNode = this.root;
+        let counter = 0;
+
+        if (currentNode == null) {
+            return 0;
+        }
+
+        while (currentNode != null) {
+            if (currentNode.value > node.value && currentNode.left != null) {
+                console.log(`Current node is less than `)
+                counter++;
+                currentNode = currentNode.left;
+            }
+            else if (currentNode.value < node.value && currentNode.right != null) {
+                console.log(`Current node is greater than `)
+                counter++;
+                currentNode = currentNode.right;
+            }
+            else {
+                break;
+            }
+        }
+
+
+
+        return counter;
+    }
 }
 
 export { Tree };

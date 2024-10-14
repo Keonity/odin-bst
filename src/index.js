@@ -54,3 +54,4 @@ secondTest.postOrder(secondTest.root, secondTest.logNode);
 console.log(secondTest.height(secondTest.root));
 console.log(secondTest.height(secondTest.root.left.right));
 console.log(secondTest.height(secondTest.root.right));
+console.log(secondTest.depth(secondTest.root.left));
