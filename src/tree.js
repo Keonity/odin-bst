@@ -311,10 +311,26 @@ class Tree {
                 break;
             }
         }
-
-
-
         return counter;
+    }
+
+    isBalanced() {
+        if (this.root == null) {
+            return false; 
+        }
+
+        let leftHt = this.height(this.root.left);
+        let rightHt = this.height(this.root.right);
+
+        console.log(leftHt);
+        console.log(rightHt);
+
+        if (leftHt != rightHt) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 }
 
