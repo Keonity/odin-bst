@@ -332,6 +332,21 @@ class Tree {
             return true;
         }
     }
+
+    updateNodes(node) {
+        console.log(this);
+        this.nodes.shift();
+        this.nodes.push(node.value);
+    }
+
+    updateNodesBound = this.updateNodes.bind(this);
+
+    rebalance() {
+        console.log(this.nodes);
+        this.inOrder(this.root, this.updateNodesBound);    
+        this.removeDuplicates();
+        this.buildTree(0, this.nodes.length);
+    }
 }
 
 export { Tree };

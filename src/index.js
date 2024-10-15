@@ -61,3 +61,6 @@ const unbalancedNode2 = new Node(6);
 secondTest.root.left.left.right.left = unbalancedNode;
 secondTest.root.left.left.left = unbalancedNode2;
 console.log(secondTest.isBalanced());
+secondTest.rebalance();
+prettyPrint(secondTest.root);
+console.log(secondTest.isBalanced());
