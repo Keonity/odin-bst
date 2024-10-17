@@ -16,11 +16,11 @@ class Tree {
         if (start > end) {
             return null;
         }
-        console.log(`Start: ${start}, End: ${end}`);
+        // console.log(`Start: ${start}, End: ${end}`);
         var currNode = new Node(this.nodes[mid]);
         currNode.left = this.buildTree(start, mid - 1);
         currNode.right = this.buildTree(mid + 1, end);
-        console.log(currNode);
+        // console.log(currNode);
 
         if (currNode.value === null) {
             return null;
@@ -68,12 +68,12 @@ class Tree {
     insert(value) {
         let newNode = new Node(value);
         let currNode = this.root;
-        console.log(`CurrNode: ${currNode}`);
+        // console.log(`CurrNode: ${currNode}`);
         while (currNode) {
-            console.log(currNode);
-            console.log(newNode.value);
+            // console.log(currNode);
+            // console.log(newNode.value);
             if (currNode.value > newNode.value) {
-                console.log(`Going left`);
+                // console.log(`Going left`);
                 if (currNode.left) {
                     currNode = currNode.left;
                 }
@@ -83,7 +83,7 @@ class Tree {
                 }
             }
             else if (currNode.value < newNode.value) {
-                console.log(`Going right`);
+                // console.log(`Going right`);
                 if (currNode.right) {
                     currNode = currNode.right;
                 }
@@ -93,11 +93,11 @@ class Tree {
                 }
             }
             else if (currNode.value === newNode.value) {
-                console.log(`Equal`);
+                // console.log(`Equal`);
                 return;
             }
             else {
-                console.log(`Else`);
+                // console.log(`Else`);
                 currNode = currNode.right;
             }
         }
@@ -197,7 +197,7 @@ class Tree {
             if (currentNode.right != null) {
                 queueArray.push(currentNode.right);
             }
-
+            console.log(`Level Order Traversal`);
             callback(currentNode);
 
         }
@@ -298,12 +298,12 @@ class Tree {
 
         while (currentNode != null) {
             if (currentNode.value > node.value && currentNode.left != null) {
-                console.log(`Current node is less than `)
+                // console.log(`Current node is less than `)
                 counter++;
                 currentNode = currentNode.left;
             }
             else if (currentNode.value < node.value && currentNode.right != null) {
-                console.log(`Current node is greater than `)
+                // console.log(`Current node is greater than `)
                 counter++;
                 currentNode = currentNode.right;
             }
@@ -322,8 +322,8 @@ class Tree {
         let leftHt = this.height(this.root.left);
         let rightHt = this.height(this.root.right);
 
-        console.log(leftHt);
-        console.log(rightHt);
+        // console.log(leftHt);
+        // console.log(rightHt);
 
         if (leftHt != rightHt) {
             return false;
@@ -334,7 +334,7 @@ class Tree {
     }
 
     updateNodes(node) {
-        console.log(this);
+        // console.log(this);
         this.nodes.shift();
         this.nodes.push(node.value);
     }
@@ -342,7 +342,7 @@ class Tree {
     updateNodesBound = this.updateNodes.bind(this);
 
     rebalance() {
-        console.log(this.nodes);
+        // console.log(this.nodes);
         this.inOrder(this.root, this.updateNodesBound);    
         this.removeDuplicates();
         this.buildTree(0, this.nodes.length);
